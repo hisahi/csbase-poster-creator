@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Log in</title>
+    </head>
+    <body>
+        <div th:if="${error != null}" th:text="${error}">Login error</div>
+
+        <h1>Log in</h1>
+
+        <form action="#" th:action="@{/login}" method="POST">
+            <p><label for="username">Username</label>: <input type="text" name="username" id="username"/></p>
+            <p><label for="password">Password</label>: <input type="password" name="password" maxlength="12" id="password"/></p>
+            <p><input type="submit" value="Submit" /></p>
+        </form>
+
+        <h1>Register</h1>
+
+        <form action="#" th:action="@{/register}" method="POST">
+            <p><label for="reg_username">Username</label>: <input type="text" name="username" id="reg_username"/></p>
+            <p><label for="reg_fullname">Full name</label>: <input type="text" name="fullname" id="reg_fullname"/></p>
+            <p><label for="reg_email">Email</label>: <input type="text" name="email" id="reg_email"/></p>
+            <p><label for="reg_password">Password</label>: <input type="password" name="password" maxlength="12" id="reg_password"/></p>
+            <p>Your password must contain at most 12 characters.</p>
+            <p><input type="submit" value="Submit" /></p>
+        </form>
+    </body>
+</html>

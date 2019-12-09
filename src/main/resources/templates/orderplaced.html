@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Order a poster</title>
+    </head>
+    <body>
+        <p><a th:href="@{/home}">Back to home</a></p>
+        <p><a th:href="@{'/poster/' + ${poster.getId()}}">See poster</a></p>
+        
+        <h1>Thank you! Your order has been placed.</h1>
+        
+        <h2 th:utext="${poster.getTitle()}">poster title</h2>
+        <pre th:utext="${poster.getDescription()}">poster description</pre>
+
+        <p>Order number: <span th:text="${orderNumber}"></span></p>
+        <p>Address: <span th:text="${address}"></span></p>
+        <p>Quantity: <span th:text="${qty}"></span></p>
+        <p>Total <span th:text="${price}"></span> €</p>
+    </body>
+</html>

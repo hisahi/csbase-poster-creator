@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Poster creation service</title>
+    </head>
+    <body>
+        <p><a th:href="@{/home}">Back to home</a></p>
+        
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>Poster</td>
+                    <td>Title</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="poster : ${posters}">
+                    <td><a th:href="@{'/poster/' + ${poster.getId()}}"><img src="" height="200" th:src="@{'/poster/' + ${poster.getId()} + '/image'}" alt="poster image" /></a></td>
+                    <td><span th:text="${poster.getTitle()}">Title</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

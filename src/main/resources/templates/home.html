@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Poster creation service</title>
+    </head>
+    <body>
+        <h1>Home page</h1>
+        <p>Logged in as <span th:text="${user.getUsername()}"></span></p>
+        <ul>
+            <li><a th:href="@{/logout}">Log out</a></li>
+            <li><a th:href="@{/user}">User details</a></li>
+            <li><a th:href="@{/new}">Create a poster</a></li>
+            <li><a th:href="@{/you}">Browse your posters</a></li>
+            <li><a th:href="@{/browse}">Browse public posters</a></li>
+        </ul>
+    </body>
+</html>

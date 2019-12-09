@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Order a poster</title>
+    </head>
+    <body>
+        <p><a th:href="@{/home}">Back to home</a></p>
+        <p><a th:href="@{'/poster/' + ${poster.getId()}}">See poster</a></p>
+        
+        <div th:if="${error != null}" th:text="${error}">Login error</div>
+
+        <h1 th:utext="${poster.getTitle()}">poster title</h1>
+        <pre th:utext="${poster.getDescription()}">poster description</pre>
+
+        <h1>User details</h1>
+
+        <form action="#" th:action="@{'/poster/' + ${poster.getId()} + '/order'}" method="POST">
+            <p><label>Username</label>: <span th:text="${user.getUsername()}"></span></p>
+            <h3>Shipping</h3>
+            <p><label>Address</label>: <input type="text" name="address" id="address" th:value="${user.getAddress()}"/></p>
+            <h3>Payment</h3>
+            <p><label>Card number</label>: <span th:text="${user.getCardNumber()}"></span></p>
+            <p><label>CVV</label>: <span th:text="${user.getCvv()}"></span></p>
+            <p><label>Expires</label>: <span th:text="${user.getExpiry()}"></span></p>
+            <p><label>Country</label>: <span th:text="${user.getCountry()}"></span></p>
+            <h3>Poster size</h3>
+            <p><input type="radio" name="size" value="normal" id="sizenormal" checked="checked"/> <label for="sizenormal">24 in x 36 in (61 cm x 91 cm); 20 € / poster</label></p>
+            <h3>Quantity</h3>
+            <p><input type="number" name="qty" id="qty" min="1" step="1" max="100" value="1"/></p>
+            <h3>Total: <span id="totalprice">20</span> €</h3>
+            <p><input type="submit" value="Submit" /></p>
+        </form>
+        
+        <script type="text/javascript">
+            function updateTotal() {
+                var size = document.querySelector("input[name=\"size\"]:checked").value;
+                var qty = document.getElementById("qty").value;
+                var unitPrice = { normal: 20 };
+                document.getElementById("totalprice").textContent = unitPrice[size] * qty;
+            }
+            document.getElementById("qty").addEventListener("change", updateTotal);
+            document.querySelectorAll("input[name=\"size\"]").forEach(function(e) { e.addEventListener("click", updateTotal); });
+            updateTotal();
+        </script>
+    </body>
+</html>

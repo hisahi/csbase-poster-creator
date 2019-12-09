@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>User details</title>
+    </head>
+    <body>
+        <p><a th:href="@{/home}">Back to home</a></p>
+        
+        <div th:if="${error != null}" th:text="${error}">Login error</div>
+
+        <h1>User details</h1>
+
+        <form action="#" th:action="@{/user}" method="POST">
+            <p><label>Username</label>: <span th:text="${user.getUsername()}"></span></p>
+            <p><label for="fullname">Full name</label>: <input type="text" name="fullname" id="fullname" th:value="${user.getFullname()}"/></p>
+            <p><label for="email">Email</label>: <input type="text" name="email" id="email" th:value="${user.getEmail()}"/></p>
+            <h3>Shipping</h3>
+            <p><label for="address">Default shipping address</label>: <input type="text" name="address" id="address" th:value="${user.getAddress()}"/></p>
+            <h3>Payment</h3>
+            <p><label for="cardNumber">Card number</label>: <input type="text" name="cardNumber" id="cardNumber" th:value="${user.getCardNumber()}"/></p>
+            <p><label for="cvv">CVV</label>: <input type="text" name="cvv" id="cvv" th:value="${user.getCvv()}"/></p>
+            <p><label for="expiry">Expires</label>: <input type="text" name="expiry" id="expiry" th:value="${user.getExpiry()}"/></p>
+            <p><label for="country">Country</label>: <input type="text" name="country" id="country" th:value="${user.getCountry()}"/></p>
+            <h3>Login</h3>
+            <p><label for="password">Password</label>: <input type="password" name="password" maxlength="12" id="password" th:value="${user.getPassword()}"/></p>
+            <p>Your password must contain at most 12 characters.</p>
+            <p><input type="submit" value="Submit" /></p>
+        </form>
+    </body>
+</html>
